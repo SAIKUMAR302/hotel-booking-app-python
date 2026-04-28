@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmed - HotelBooking</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">HotelBooking</div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/#hotels">Hotels</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="confirmation-container">
+        <div class="confirmation-card">
+            <div class="success-icon">✓</div>
+            <h1>Booking Confirmed!</h1>
+            <p class="booking-id">Booking ID: {{ booking.booking_id }}</p>
+            
+            <div class="booking-details">
+                <h2>Booking Details</h2>
+                <div class="detail-row">
+                    <span>Hotel:</span>
+                    <strong>{{ booking.hotel.name }}</strong>
+                </div>
+                <div class="detail-row">
+                    <span>Location:</span>
+                    <span>{{ booking.hotel.location }}</span>
+                </div>
+                <div class="detail-row">
+                    <span>Guest Name:</span>
+                    <span>{{ booking.guest_name }}</span>
+                </div>
+                <div class="detail-row">
+                    <span>Email:</span>
+                    <span>{{ booking.email }}</span>
+                </div>
+                <div class="detail-row">
+                    <span>Check-in:</span>
+                    <span>{{ booking.check_in }}</span>
+                </div>
+                <div class="detail-row">
+                    <span>Check-out:</span>
+                    <span>{{ booking.check_out }}</span>
+                </div>
+                <div class="detail-row">
+                    <span>Nights:</span>
+                    <span>{{ booking.nights }}</span>
+                </div>
+                <div class="detail-row">
+                    <span>Guests:</span>
+                    <span>{{ booking.guests }}</span>
+                </div>
+                <div class="detail-row total">
+                    <span>Total Amount:</span>
+                    <strong>${{ booking.total_price }}</strong>
+                </div>
+            </div>
+
+            <div class="confirmation-actions">
+                <button onclick="window.print()" class="print-btn">Print Confirmation</button>
+                <a href="/" class="home-btn">Back to Home</a>
+            </div>
+
+            <div class="note">
+                <p>A confirmation email has been sent to your email address.</p>
+                <p>Please present your booking ID at check-in.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

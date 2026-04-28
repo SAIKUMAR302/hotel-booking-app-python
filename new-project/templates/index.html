@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HotelBooking - Find Your Perfect Stay</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">HotelBooking</div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="#hotels">Hotels</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Find Your Perfect Stay</h1>
+            <p>Book the best hotels at the best prices</p>
+            <div class="search-box">
+                <input type="text" id="searchLocation" placeholder="Where are you going?" class="search-input">
+                <input type="date" id="searchCheckIn" class="search-input">
+                <input type="date" id="searchCheckOut" class="search-input">
+                <button onclick="searchHotels()" class="search-btn">Search</button>
+            </div>
+        </div>
+    </header>
+
+    <section id="hotels" class="hotels-section">
+        <h2>Popular Hotels</h2>
+        <div class="hotels-grid" id="hotelsGrid">
+            {% for hotel in hotels %}
+            <div class="hotel-card" data-location="{{ hotel.location }}">
+                <img src="{{ hotel.image }}" alt="{{ hotel.name }}" class="hotel-image">
+                <div class="hotel-info">
+                    <h3>{{ hotel.name }}</h3>
+                    <p class="location">📍 {{ hotel.location }}</p>
+                    <div class="rating">⭐ {{ hotel.rating }} / 5</div>
+                    <p class="price">${{ hotel.price_per_night }} <span>/ night</span></p>
+                    <div class="amenities">
+                        {% for amenity in hotel.amenities[:3] %}
+                        <span class="amenity-tag">{{ amenity }}</span>
+                        {% endfor %}
+                    </div>
+                    <a href="/hotel/{{ hotel.id }}" class="book-btn">Book Now</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 HotelBooking. All rights reserved.</p>
+    </footer>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
